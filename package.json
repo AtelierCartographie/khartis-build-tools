@@ -18,7 +18,11 @@
     "test": "ember try:each"
   },
   "dependencies": {
-    "ember-cli-babel": "^6.3.0"
+    "@types/express": "^4.0.37",
+    "@types/puppeteer": "^0.10.2",
+    "ember-cli-babel": "^6.3.0",
+    "express": "^4.15.5",
+    "puppeteer": "^0.11.0"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",

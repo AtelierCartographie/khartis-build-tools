@@ -5,7 +5,7 @@ const Plugin = require('broccoli-plugin'),
   express = require('express');
 
 const elBbox = function (el) {
-  return Promises.all([el._client.send('Page.getLayoutMetrics'), el._client.send('DOM.getBoxModel', { objectId: el._remoteObject.objectId })])
+  return Promise.all([el._client.send('Page.getLayoutMetrics'), el._client.send('DOM.getBoxModel', { objectId: el._remoteObject.objectId })])
     .then( ([layoutMetrics, boxModel]) => {
       if (!boxModel || !boxModel.model)
         return null;

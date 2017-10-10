@@ -4,17 +4,18 @@ const Plugin = require('broccoli-plugin'),
   puppeteer = require('puppeteer'),
   express = require('express');
 
-const elBbox = async function (el) {
-  const layoutMetrics = await el._client.send('Page.getLayoutMetrics');
-  const boxModel = await el._client.send('DOM.getBoxModel', { objectId: el._remoteObject.objectId });
-  if (!boxModel || !boxModel.model)
-    return null;
-  return {
-    x: boxModel.model.margin[0] + (layoutMetrics && layoutMetrics.layoutViewport ? layoutMetrics.layoutViewport.pageX : 0),
-    y: boxModel.model.margin[1] + (layoutMetrics && layoutMetrics.layoutViewport ? layoutMetrics.layoutViewport.pageY : 0),
-    width: boxModel.model.width,
-    height: boxModel.model.height
-  };
+const elBbox = function (el) {
+  return Promises.all([el._client.send('Page.getLayoutMetrics'), el._client.send('DOM.getBoxModel', { objectId: el._remoteObject.objectId })])
+    .then( ([layoutMetrics, boxModel]) => {
+      if (!boxModel || !boxModel.model)
+        return null;
+      return {
+        x: boxModel.model.margin[0] + (layoutMetrics && layoutMetrics.layoutViewport ? layoutMetrics.layoutViewport.pageX : 0),
+        y: boxModel.model.margin[1] + (layoutMetrics && layoutMetrics.layoutViewport ? layoutMetrics.layoutViewport.pageY : 0),
+        width: boxModel.model.width,
+        height: boxModel.model.height
+      };
+    });
 };
 
 // Create a subclass Thumbnailer derived from Plugin

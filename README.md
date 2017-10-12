@@ -1,6 +1,6 @@
-# khartis-thumbnailer
+# khartis-build-tools
 
-Build time thumbnails generator for khartis
+Build tools for khartis
 
 ## Installation
 

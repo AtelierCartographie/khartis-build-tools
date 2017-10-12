@@ -1,7 +1,7 @@
 {
-  "name": "khartis-thumbnailer",
+  "name": "khartis-build-tools",
   "version": "0.1.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Build tools for khartis",
   "keywords": [
     "ember-addon"
   ],

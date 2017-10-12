@@ -4,7 +4,7 @@ const mergeTrees = require('broccoli-merge-trees'),
       commands = require('./lib/commands');
 
 module.exports = {
-  name: 'khartis-thumbnailer',
+  name: 'khartis-build-tools',
   configObject: {},
   
     isDevelopingAddon: function() {

@@ -1,8 +1,7 @@
 /* eslint-env node */
 'use strict';
 const mergeTrees = require('broccoli-merge-trees'),
-      buildCommand = require('./lib/commands/build'),
-      serveCommand = require('./lib/commands/serve');
+      buildCommand = require('./lib/commands/build');
 
 module.exports = {
   name: 'khartis-build-tools',
@@ -13,8 +12,7 @@ module.exports = {
     },
     includedCommands() {
       return {
-        "khartis:build": buildCommand,
-        "khartis:serve": serveCommand
+        "khartis:build": buildCommand
       };
     },
     postprocessTree(type, tree) {

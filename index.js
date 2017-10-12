@@ -16,7 +16,7 @@ module.exports = {
       };
     },
     postprocessTree(type, tree) {
-      if (process.env.KHARTIS_THUMBNAILS_BUILD !== "false" && type === 'all') {
+      if (process.env.KHARTIS_THUMBNAILS_BUILD === "true" && type === 'all') {
         const Thumbnailer = require('./lib/tasks/thumbnailer')
         return mergeTrees([tree, new Thumbnailer([tree])], {overwrite: true});
       }

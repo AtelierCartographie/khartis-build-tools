@@ -1,0 +1,9 @@
+{
+  "transport": {
+    "module": "github",
+    "repository": "apezel/khartis-electron-release",
+    "token": "77b33a040714899d4277c3d5e2bdf4d270e0b021",
+    "changelog": "changelog/CHANGELOG.{version}.md",
+    "tagName": "khartis-{version}"
+  }
+}

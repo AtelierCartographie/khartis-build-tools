@@ -22,6 +22,10 @@ module.exports = {
         const Thumbnailer = require('./lib/tasks/thumbnailer')
         return mergeTrees([tree, new Thumbnailer([tree])], {overwrite: true});
       }
+      if (process.env.KHARTIS_MKDOCS_BUILD === "true" && type === 'all') {
+        const MkDocs = require('./lib/tasks/mkdocs')
+        return mergeTrees([tree, new MkDocs([tree])], {overwrite: true});
+      }
       return tree;
     },
     config: function (env, baseConfig) {
